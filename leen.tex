@@ -1,4 +1,147 @@
 
-\section{asd}
-boo
+\section{Git and SVN}
+
+
+\begin{verbatim}
+
+==== Further reading ====
+=== The polite programmer presents - Torvalds Vs the world of CVS ===
+
+Git > Mercurial > tar and patches > SVN > CVS
+
+== Bitkeeper ==
+An early scm, decent but why settle for less than perfect.
+Git flow is partially based on Bitkeeper but this was commercially distributed system which people did not like and could not even try to improve.
+
+
+== Wanted features, What do you need ==
+  * What goes in, comes out. Undetected corruption is not an option.
+  * Performance, if it takes too much time...
+  * Merging easy, Branching is trivial. Merging should be easy.
+  * Diff, to show what and how much changed. But why only on files?
+
+== Distributed ==
+  * Centralized collaboration is hard due to branch cost
+  * No one central location
+  * All as important, no 'more important' locations
+  * NO single point of failure
+  * It means more than offline, but even that is often very useful
+  * It can be used as crude backup, as all copies can be used equally
+  * However, branching is required for offline use on any scale
+  * Trust, who can write to 'the' repo is 'fixed'
+    * You can have a private repo, if you share others can ignore you or use it
+    * Pull by choice
+    * A release team can use this to create a 'verified' repo/branch 
+  * Local commits can be shared, share experimental code between a smaller team
+  * Network of trust
+    * Only trust who you need and know you can trust
+    * They trust who they know to be trustworty (in what they do at least)
+    * At all points you can review and filter, and even review history
+
+== Git as a tool ==
+  * You can use Git just for merging, then put stuff in CVS. If you have to
+  * Git makes merging easier than the competition
+  * Merging can be delegated to the best knowing party
+  * You dont need to see or share all existing branches
+  * Branch names need not be unique across the globe
+  * A super project can contain references to multiple projects which can be shared
+  * Checksum everything, cryptographically secure, just for consistancy
+    * Trust your data to be valid
+    * Trust the data even from a shaky source, as long as you have the checksum
+  * Git can track full history unless you force it not to
+    * Tracks history regardless of the files the content lives in
+
+
+
+=== Hg Git and the rest ===
+Hg history is sacred.
+Git lets you rebase history more easilly. @a
+
+Git does not really cater to SVN users.
+
+SourceTree is a GUI by atlassian
+TortoiseHg is a shell extension
+
+Eclipse has a plugin for .*
+
+Hg cares about windows
+Git can be sortof run on windows
+
+Hg might be more backwards compatible
+
+Hg can support shell written extensions using alliasses, allowing core features accessed
+
+Commercial support for Hg can be bought
+
+Hosting a git or Hg server can be done or done for you easilly
+
+
+=== Why the git chose GIT ==
+Things in git are immutable.
+Safe git history (contradict earlier statement see @a)
+
+Rewriting history can be done, and git sounds easier.
+
+Branch sounds cooler than bookmark, and is actually a core feature.
+
+Git allows partial files to be committed, leaving some stuff local if wanted.
+Even if the file is huge.
+
+Git blame -C -s
+Track ownership/history even if you move stuff from a.file to b.file
+
+
+=== Biz turtle ===
+
+Do not anger the programmer, choose the right DVCS
+
+== Cvs ==
+  * Mature
+  * Moving is broken
+  * Symlinks are not secure
+  * No atomical operations
+  * Branching 'can' be done
+
+== SVN ==
+  * Newer than CVS
+  * Atomical operations
+  * Branching can be done
+  * Not p2p
+
+== GIT ==
+  * Great
+  * Speedy
+  * Branching is fun
+  * Full offline history
+  * p2p
+  * Windows sucks, git for windows just a small bit
+
+
+== Hg ==
+  * Git for dummies
+  * Documented apperantly (git too but hey...)
+  * p2p
+  * no 2 parent merge
+  * Extensions, no scripts
+  * less powerfull
+
+
+
+Keep using the system you all like, it saves time
+SVN is server king.
+
+Hosting can be bought, so can google((Do not make ME try, unless I can borrow some 10x10x10M diamonds and a forklift, and lunch)).
+
+
+==== Group discussion ====
+
+== Git ==
+  * It is something different, it is fast, it is distributed, it is open source
+  * It is better in the sense of performance (It is fast)
+  * Branching is a native part of it; not so hard to make branches and commit them back on the chain
+  * Its tracking mechanism is powerful
+  * It goes a far way in insuring the integrity of your data
+  * It keeps track of the content not the files, so renaming files won't
+  * very complete, unlike mercurial which would require extra plugins for the same features
+\end{verbatim}
 
