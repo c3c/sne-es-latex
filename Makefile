@@ -13,5 +13,5 @@ freading.pdf: freading.tex azad.tex esan.tex cedric.tex leen.tex freading.bib
 	pdflatex freading
 
 clean:
-	rm *.aux *.pdf *.bbl  *.blg  *synctex.gz *.log *.out *.dvi
+	rm -f *.aux *.pdf *.bbl  *.blg  *.synctex.gz *.log *.out *.dvi
 
