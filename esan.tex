@@ -3,7 +3,7 @@
 
 
 \subsection{Recursive Make Considered Harmful}
-Peter Miller wrote an article about the problems he noticed in the usage of the Make. Most notably the problems that originate from the Recursive Make paradigm.
+Peter Miller wrote an article about the problems he noticed in the usage of the Make\cite{miller1998recursive}. Most notably the problems that originate from the Recursive Make paradigm.
 Image~\ref{fig:peter_miller}\footnote{Source: \url{http://miller.emu.id.au/pmiller/}} shows him over the years.
 \begin{figure} \centering
 \captionsetup[subfigure]{labelformat=empty}
@@ -37,7 +37,7 @@ The indexing cost of this is negligible when compared to the cost of over-buildi
 
 The full project make also allows make to make full use of the option of parallel building. Because the entire DAG is available make can work on both ends simultaneously, with recursive make this is impossible because make is not aware of the greater scope of the dependencies.
 
-Present Day:
+\subsubsection{Present Day}
 A lot of the reasons and arguments in favor of recursive makes are no longer applicable on current computers. Memory has become cheap and processing power too. With current design philosophies going towards greater parallelism it seems that the argument to allow make a full DAG are still applicable. The assumed un-manageability of big makefiles is stopped by the appearance of build tools which automate the process.
 
 
