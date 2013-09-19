@@ -1,4 +1,53 @@
+\documentclass[titlepage; draft]{report}
+	\author{A. ~Kamali, C.V. ~Bockhaven, E. Wit, L.V. Duijn}
+	\title{Further Reading \newline XML and XSLT concepts}
+	\date{\today}
 
-\section{asd}
-boo
+\begin{document}
+        \maketitle
+        \tableofcontents
+
+\section{My Contribution}
+	I found the following points in the "Transforming XML with XSLT" interesting:   SHOULD ALSO HAVE THE HYPERLINK TO //http://oreilly.com/catalog/orxmlapp/chapter/ch07.pdf
+        \begin{itemize}
+		\item When processing a document of XML, only a single rule is ever used to process the current node in the current node list;
+		\item If a stylesheet uses only the root template, then it can optionally use the simpleform stylesheet syntax that allows <xsl:stylesheet> and <xsl:template match="/"> to be left out;
+		\item We can also use Multiple Templates rather than s single root template;
+		\item We can also use a sort of regular expressions in matching rules;
+		\item When you create a template, in addition to the match pattern, it can also have a mode attribute that assigns a name to the special mode in which you want to invoke the template;
+		\item We can reuse the previously built templates by using <xsl:import mode>;
+		\item When applying multiple rules to one object, the most specific one wins;
+		\item The basic scheme for determining which templates are more specific than others is as follows: the generic pattern * is less specific than a pattern like SOMETHING or xyz:SOMETHING, which is less specific than SOMETHING[predicate] or SOMETHING/SOMETHINGELSE;
+		\item Or we can use the priority="an integer";
+		\item All XSLT transformations process the source node tree to produce a tree of result nodes. If multiple transformations are being applied in sequence by your application, the result tree of one transformation becomes the source tree of the next transformation in sequence. When no more transformations need to be done, the final tree of result nodes needs to be written out as a stream of characters again. This process is called serializing the result tree.
+		\item XSLT 1.0 supports three different output methods:
+		\item \item <xsl:output method="xml"/>;
+		\item \item <xsl:output method="html"/>;
+		\item \item <xsl:output method="text"/>.
+        \end{itemize}
+\section{Group Discussion Result}
+	Key point to the XSLT parsing is the XPath pattern matching system used to find and match source blocks with the templates. XSLT is modular and can be extended; when using multiple XSLT templates the template with a "match" that is more specific then others is used to parse the source node. Templates with a higher specificity take precedence over less specific templates. E.g. match="ROW" has a lower specificity than "match=ROW[ SAL > 2000 ]" as such if "match=ROW[ SAL > 2000 ]" is applicable the template which matches merely "ROW" is ignored;
+
+	This is different to the process of CSS; in CSS if multiple patterns match an element all rules that are defined for those patterns are applied to the element. If multiple of the applied CSS rules define the same properties the more specific rule overwrites the properties set by less specific rules. But non overridden properties are inherited from which ever rule defined them. In XSLT only the most specific template is used and less specific templates are not inherited;
+	
+	XPath has support for certain mathematical operations. E.g. doing something special for each 5th row or special handling in case some input value is odd or even;
+	
+	XSLT transformations can be chained. That is to say if multiple transformations are being applied in sequence of each other then the node tree which is the output of one transformation is used as the input of another transformation. This process is called serializing;
+	
+	While making a stylesheet in order to make it easier to extend or edit your templates, one can make use of multiple templates rather than a single rooted template stylesheet.
+\section{Temporary Space}
+        There is still no content.
+        What is \LaTeX{} anyway?!
+        This is line.
+        This is a new line.
+
+        This is a completely new line.\newline
+        This is another new line.
+
+
+        This is a new line after two empty lines.
+\section{Done with my own part}
+\ldots{} what are ldots?!tion
+
+\end{document}
 
