@@ -8,7 +8,7 @@ view:
 
 freading.pdf: freading.tex azad.tex esan.tex cedric.tex leen.tex freading.bib
 	pdflatex freading
-	bibtex freading& true
+	bibtex freading
 	pdflatex freading
 	pdflatex freading
 
