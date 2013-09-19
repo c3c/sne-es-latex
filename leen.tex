@@ -8,7 +8,7 @@ Git >  Mercurial > tar+patches > SVN > CVS
 \label{math:linus-svn}
 \]
 
-Linus preferred source management methods are shown in relation \ref{math:linus-svn}.
+Linus T. preferred source management methods are shown in relation \ref{math:linus-svn}.
 
 
 \subsubsection{History, Bitkeeper}
@@ -34,7 +34,7 @@ What are possible motives for switching to a distributed system,
  \item By distributing you have a crude form of backup as all copies can be used equally.
 \end{itemize}
 
-However, there are some properties a distributed system has which reduce the fun of building using and maintaining it,
+However, there are some properties a distributed system has which reduce the fun of building, using and maintaining it,
 for example branching is required for any (offline) use. While the branching can
 be rather cheap in terms of storage and computational requirements, the demand
 for constant merging will require special care and introduce overhead in using
@@ -47,20 +47,161 @@ from those peers you trust, and by extension and smart merging, the peers they
 trust. Each person can determine who has access to their own repository by means
 of their own choice. A use case for this would be a realease team that can read
 from a developers repository\footnote{but not write if they choose to} and
-carefully test all changes they introduce into a 'verified' release ready
+carefully test all changes they introduce into a 'verified' release grade
 repository.
 
-A team of developers, potentially one of many, can share their own branches and
-committed code without running into conflicts with other teams. Allowing to
-develop complex experimental features collaboratively while maintaining a stable codebase for
-other teams who might work on their possibly related features.
+A team of developers, one of potentially many, can share their branches and
+code without continously running into conflicts with other teams. Therefore enabling them to
+develop complex experimental features collaboratively, while maintaining a stable codebase for
+other teams who might work on their possibly related or even conflicting features.
 
-\begin{desciption}
-  * Network of trust
-    * Only trust who you need and know you can trust
-    * They trust who they know to be trustworty (in what they do at least)
-    * At all points you can review and filter, and even review history
-\end{discription}
+
+A decent distributed code management system will allow a user to track the source and history of code, features and bugs.
+By making sure a full history is available you can enjoy the power of quality reviews, or audits should someone expect foul play.
+
+
+\subsubsection{The powers of Git}
+
+\begin{itemize}
+\item
+Even if you don't care about Git and just adore CVS\footnote{Do not let L. Torvalds know this, for your own sake}
+you can use Git just for merging, then put it all back in CVS.
+
+\item
+Git makes merging easier than the competition by automating what it can.
+
+\item
+Merging can be delegated to the best knowing party, in the case of a conflict the person who caused it will know best what to do.
+
+\item
+You dont need to see or share all existing branches, a developer work in a private experimental branch and push it out when done or decent.
+
+\item
+Branch names need not be unique across the globe so you can use natural names
+
+\item
+A 'super' project can contain references to multiple projects which can be shared, much like libraries of code.
+
+\item
+Git checksums everything, cryptographically secure, this to ensure the data you put in you also get out. It makes it harder to sabotage the history with nasty suprises.
+
+\item
+Trust your data to be valid, Git does all it can to detect corruption for you.
+
+\item Trust the data even from a shaky source, as long as you have the checksum from another more reliable source.
+
+
+\item
+Git can track full history of changes, however if you really need to you can rewrite it, but you can't really hide the act.
+
+\item 
+Tracks history regardless of the files the content lives in, tracking history even if you move a piece of text arround.
+
+\end{itemize}
+
+
+\subsection{Hg Vs Git}
+\label{sect:rebase}
+
+%Figure of a mercurry blob vs an idiot
+
+
+When comparing Mercurial\footnote{Also known as Hg} with Git you can run into these statement, each relevant to selecting the system suited for you.
+\begin{itemize}
+\item
+Hg history is sacred, you cannot change it.
+
+\item
+Git lets you rebase/change/destroy history 'easilly' if you explicitly instruct it to.
+
+\item
+Git does not really cater to SVN users, by design.
+
+\item
+There are plugins for both, with Hg having a tad more windows fiendly software, and Linux being the most efficient platform for Git.
+If you use Eclipse just ignore the operating system, it has plugins for everything and anything.
+
+\item
+Hg cares about windows, which could be usefull when you run into a bug or want the last bit of performance you want.
+Git can be run on windows at a small performance reduction when compared to Linux, but Git is more pleasant in a Linux environment.
+
+\item
+Hg might be more backwards compatible\footnote{Wikipdia style, Citation needed}, though we do have this on authority.
+
+\item
+Hg can support shell written extensions using alliasses, allowing core features to be accessed. This is a powerfull way to write plugins to extend the power of Hg.
+
+\item
+There are always options to buy commercial support for Hg.
+Though Git will also have it's share of knowledgable consultants\footnote{Citition desired}.
+
+\item
+Hosting a git or Hg server can be done or done for you easilly at affordable fees.
+
+\end{itemize}
+
+
+Why could you choose Git as the best system for You?
+\begin{enumerate}
+\item
+Things in git are immutable, being able to revert changes and undo mistakes is a useful safety net.
+
+\item
+Git history is safe and stored indefinately, unless you go to the trouble of telling Git to like in Section \ref{sect:rebase}
+Rewriting history can be done in both Hg and Git, the Git way of doing so being quite powerful and once you know how, easier.
+
+\item
+Bragging rights, just because \textit{Branch} sounds cooler than \textit{bookmark}, and is actually a \textcolor{red}{core} feature.
+
+\item
+Git allows partial files to be committed, leaving some changes local if wanted (Such as a 'comment to self, spellcheck my name').
+This still holds even for larger files, where it becomes much more useful.
+
+\item
+\large{\textit{git blame -C -s}}
+Track ownership/history even if you move a feature or bug from \textcolor{green}{a.file} to \textcolor{blue}{b.file}.
+
+
+\end{enumerate}
+
+
+\subsubsection{A simple comparisson of VCS's}
+There is always one rule to manage by;
+Do not anger the programmer, choose the right DVCS
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+Feature             & CVS & SVN & Git & Hg\\
+\hline
+Mature              & +++ & ++  &  +  & + \\
+Track moved content &  -  &  -  & +++ & + \\ %?hg svn
+Atomical operations &  -  &  +  &  +  & + \\ 
+Branching possible  &  +  &  +  &  +  & + \\
+Branching pleasant  &  -  &  -  & +++ & + \\
+P2P                 &  -  &  -  & +++ & ++\\ %? hg
+Speed               &  -  &  -  & +++ & - \\
+Offline history     &  -  &  -  &  +  & + \\
+Windows compatible  &  +  &  +  &  +  &+++\\
+Learning curve      &  +  &  +  &  -  & + \\
+Documentation       &  +  &  +  &  +  & + \\ %? they are all documented, howto'ized etc.
+2 parent merge      &  -  &  -  &  +  & - \\
+Extensions          &  -  &  -  &  -  & + \\
+Core power          &  -  &  -  &  +  & - \\
+Small hosting cost  & low & low & low &low\\
+Huge hosting cost   &High &High &low&low\\
+\end{tabular}
+
+
+Of course, learning to use any new system is bound to slow down progress for a while, so why not consider 
+keeping the system that has been in place for a while now? Are you running into any problems? Changing VCS
+will manage cause at least some problems.
+
+
+
+
+
+
+
 
 \begin{verbatim}
 
