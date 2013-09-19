@@ -13,15 +13,25 @@
 %%\usepackage{algorithmic}
 
 % Title Page
-\title{Shiny latex for SNE}
+\title{Shiny \LaTeX{} for SNE\vspace{10pt}}
 \author{
+Azad Kamali\\
+Cedric Van Bockhaven\\
 Leendert van Duijn\\
 Esan Wit\\
-MORE NAMES, alphabetical order\\}
+\vspace{10pt}
+}
 
 \begin{document}
-\maketitle
-\newpage
+
+\begin{titlepage}
+	\enlargethispage{10cm}
+	\begin{figure}[h]
+	\includegraphics[width=1.0\textwidth]{images/SNELogo.png}
+	\end{figure}
+	{\let\newpage\relax\maketitle}
+\end{titlepage}
+
 \tableofcontents
 \newpage
 
