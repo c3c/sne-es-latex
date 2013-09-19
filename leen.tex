@@ -18,11 +18,49 @@ Git's flow is partially based on Bitkeeper but this was commercially distributed
 \subsubsection{Future, what features would a replacement have?}
 
 \begin{enumerate}
-\item What goes in, comes out. Undetected corruption is not an option.
-\item Performance, if it takes too much time\ldots
-\item Merging easy, Branching is trivial. Merging should be easy.
-\item Diff, to show what and how much changed. But why only on files?
+  \item What goes in, comes out. Undetected corruption is not an option.
+  \item Performance, if it takes too much time\ldots
+  \item Merging easy, Branching is trivial. Merging should be easy.
+  \item Diff, to show what and how much changed. But why only on files?
 \end{enumerate}
+
+\subsubsection{A distributed system}
+What are possible motives for switching to a distributed system,
+\begin{itemize}
+ \item Centralized collaboration is hard due to branch cost, more accuratly merging branches.
+ \item You dont\'t want a central location waiting to fail or be compromized.
+ \item You don\'t want any single point of failure.
+ \item You can work offline for longer periods of time.
+ \item By distributing you have a crude form of backup as all copies can be used equally.
+\end{itemize}
+
+However, there are some properties a distributed system has which reduce the fun of building using and maintaining it,
+for example branching is required for any (offline) use. While the branching can
+be rather cheap in terms of storage and computational requirements, the demand
+for constant merging will require special care and introduce overhead in using
+the system.
+
+
+Using a distributed system you can benefit from a Trust network, by modelling
+the repositories to be compatible you can easilly incorperate/pull code and patches
+from those peers you trust, and by extension and smart merging, the peers they
+trust. Each person can determine who has access to their own repository by means
+of their own choice. A use case for this would be a realease team that can read
+from a developers repository\footnote{but not write if they choose to} and
+carefully test all changes they introduce into a 'verified' release ready
+repository.
+
+A team of developers, potentially one of many, can share their own branches and
+committed code without running into conflicts with other teams. Allowing to
+develop complex experimental features collaboratively while maintaining a stable codebase for
+other teams who might work on their possibly related features.
+
+\begin{desciption}
+  * Network of trust
+    * Only trust who you need and know you can trust
+    * They trust who they know to be trustworty (in what they do at least)
+    * At all points you can review and filter, and even review history
+\end{discription}
 
 \begin{verbatim}
 
