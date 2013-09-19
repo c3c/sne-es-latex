@@ -1,10 +1,31 @@
 
 \section{Git and SVN}
 
+\subsection{The polite programmer presents - Torvalds Vs the world of CVS}
+
+\[
+Git >  Mercurial > tar+patches > SVN > CVS
+\label{math:linus-svn}
+\]
+
+Linus preferred source management methods are shown in relation \ref{math:linus-svn}.
+
+
+\subsubsection{History, Bitkeeper}
+An early scm, decent but why settle for less than perfect.
+Git's flow is partially based on Bitkeeper but this was commercially distributed system which people did not like and could not even try to improve.
+
+\subsubsection{Future, what features would a replacement have?}
+
+\begin{enumerate}
+\item What goes in, comes out. Undetected corruption is not an option.
+\item Performance, if it takes too much time\ldots
+\item Merging easy, Branching is trivial. Merging should be easy.
+\item Diff, to show what and how much changed. But why only on files?
+\end{enumerate}
 
 \begin{verbatim}
 
-==== Further reading ====
 === The polite programmer presents - Torvalds Vs the world of CVS ===
 
 Git > Mercurial > tar and patches > SVN > CVS
