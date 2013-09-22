@@ -8,34 +8,46 @@
 %\begin{document}
 \section{Further Reading, XML and XSLT concepts}
 \label{sect:azad}
-\subsection{My Contribution, by Azad Kamali}
+\subsection{Transforming XML with XSLT}
 	I found the following points in the \href{http://oreilly.com/catalog/orxmlapp/chapter/ch07.pdf}{Transforming XML with XSLT} interesting:
         \begin{itemize}
-		\item When processing a document of XML, only a single rule is ever used to process the current node in the current node list;
-		\item If a stylesheet uses only the root template, then it can optionally use the simple form stylesheet syntax that allows \verb~<xsl:stylesheet>~ and \verb~<xsl:template match="/">~ to be left out;
-		\item We can also use Multiple Templates rather than s single root template;
-		\item We can also use a sort of regular expressions in matching rules;
-		\item When you create a template, in addition to the match pattern, it can also have a mode attribute that assigns a name to the special mode in which you want to invoke the template;
-    \item We can reuse the previously built templates by using \verb~<xsl:import mode>~;
-		\item When applying multiple rules to one object, the most specific one wins;
-		\item The basic scheme for determining which templates are more specific than others is as follows: the generic pattern * is less specific than a pattern like SOMETHING or xyz:SOMETHING, which is less specific than SOMETHING[predicate] or SOMETHING/SOMETHINGELSE;
-		\item Or we can use the priority="an integer";
+		\item When processing a document of XML, only a single matched template is used to process the current node.
+		\item If a stylesheet uses only the root template, then it can optionally use the simple form stylesheet syntax that allows \verb~<xsl:stylesheet>~ and \verb~<xsl:template match="/">~ to be left out.
+		\item It is possible to use multiple templates rather than s single root template.
+        \item We can reuse the previously built templates by using \verb~<xsl:import mode>~.
+		\item It is possible to use a sort of regular expression for matching rules.
+		\item When you create a template, in addition to the match pattern, it can also have a mode attribute that assigns a name to the special mode in which you want to invoke the template.
+		\item When applying multiple rules to one object, the most specific one wins.
+		\item The basic scheme for determining which templates are more specific than others is as follows, ordered by ascending specificity:
+		\begin{itemize} 
+		    \item The generic pattern: \verb|*| 
+		    \item Element name: \verb|SOMETHING| or \verb|xyz:SOMETHING|
+		    \item Element path: \verb|SOMETHING/SOMETHINGELSE|
+		    \item Element with matching predicate: \verb|SOMETHING[predicate]|
+	    \end{itemize}
 		\item All XSLT transformations process the source node tree to produce a tree of result nodes. If multiple transformations are being applied in sequence by your application, the result tree of one transformation becomes the source tree of the next transformation in sequence. When no more transformations need to be done, the final tree of result nodes needs to be written out as a stream of characters again. This process is called serializing the result tree.
 		\item XSLT 1.0 supports three different output methods:
-		\item  \verb~<xsl:output method="xml"/>~;
-		\item \verb~<xsl:output method="html"/>~;
-		\item \verb~<xsl:output method="text"/>~.
+		    \begin{itemize}
+            \item \verb~<xsl:output method=~{\color{red}\verb|"xml"|}\verb|/>|
+		    \item \verb~<xsl:output method=~{\color{red}\verb|"html"|}\verb|/>|
+		    \item \verb~<xsl:output method=~{\color{red}\verb|"text"|}\verb|/>|
+	        \end{itemize}
         \end{itemize}
+        
 \subsection{Group Discussion Result}
-	Key point to the XSLT parsing is the XPath pattern matching system used to find and match source blocks with the templates. XSLT is modular and can be extended; when using multiple XSLT templates the template with a "match" that is more specific then others is used to parse the source node. Templates with a higher specificity take precedence over less specific templates. E.g. \textcolor{red}{match="ROW"} has a lower specificity than "\textcolor{green}{match=ROW[ $SAL > 2000$ ]}" as such if "\textcolor{green}{match=ROW[ $SAL > 2000$ ]}" is applicable the template which matches merely "\textcolor{blue}{ROW}" is ignored;
+Key point to the XSLT parsing is the XPath pattern matching system used to find and match source blocks with the templates. XSLT is modular and can be extended; when using multiple XSLT templates the template with a \verb|"match"| that is more specific then others is used to parse the source node. Templates with a higher specificity take precedence over less specific templates. 
+	
+E.g. \textcolor{red}{match="ROW"} has a lower specificity than "\textcolor{green}{match=ROW[ $SAL > 2000$ ]}" as such if "\textcolor{green}{match=ROW[ $SAL > 2000$ ]}" is applicable the template which matches merely "\textcolor{blue}{ROW}" is ignored;
 
-	This is different to the process of CSS; in CSS if multiple patterns match an element all rules that are defined for those patterns are applied to the element. If multiple of the applied CSS rules define the same properties the more specific rule overwrites the properties set by less specific rules. But non overridden properties are inherited from which ever rule defined them. In XSLT only the most specific template is used and less specific templates are not inherited;
-	
-	XPath has support for certain mathematical operations. E.g. doing something special for each 5th row or special handling in case some input value is odd or even;
-	
-	XSLT transformations can be chained. That is to say if multiple transformations are being applied in sequence of each other then the node tree which is the output of one transformation is used as the input of another transformation. This process is called serializing;
-	
-	While making a stylesheet in order to make it easier to extend or edit your templates, one can make use of multiple templates rather than a single rooted template stylesheet.
 
-%\end{document}
+This is different to the process of CSS; in CSS if multiple patterns match an element all rules that are defined for those patterns are applied to the element. If multiple of the applied CSS rules define the same properties the more specific rule overwrites the properties set by less specific rules. But non overridden properties are inherited from which ever rule defined them. In XSLT only the most specific template is used and less specific templates are not inherited;
+	
+
+XPath has support for certain mathematical operations. E.g. doing something special for each 5th row or special handling in case some input value is odd or even;
+	
+
+XSLT transformations can be chained. That is to say if multiple transformations are being applied in sequence of each other then the node tree which is the output of one transformation is used as the input of another transformation. This process is called serializing;
+	
+
+While making a stylesheet in order to make it easier to extend or edit your templates, one can make use of multiple templates rather than a single rooted template stylesheet.
 
