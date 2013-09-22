@@ -1,14 +1,14 @@
-\documentclass[titlepage; draft]{report}
-	\author{A. ~Kamali, C.V. ~Bockhaven, E. Wit, L.V. Duijn}
+%\documentclass[titlepage; draft]{report}
+%	\author{A. ~Kamali, C.V. ~Bockhaven, E. Wit, L.V. Duijn}
 %	\title{Further Reading \newline XML and XSLT concepts}
-	\date{\today}
-        \usepackage[usenames,dvi,svgames]{xcolor}
-	\usepackage{hyperref}
+%	\date{\today}
+%       \usepackage[usenames,dvi,svgames]{xcolor}
+%	\usepackage{hyperref}
 
 %\begin{document}
-<<<<<<< HEAD
-\section*{Further Reading \newline XML and XSLT concepts}
-\subsection*{My Contribution}
+\section{Further Reading, XML and XSLT concepts}
+\label{sect:azad}
+\subsection{My Contribution, by Azad Kamali}
 	I found the following points in the \href{http://oreilly.com/catalog/orxmlapp/chapter/ch07.pdf}{Transforming XML with XSLT} interegsting:
         \begin{itemize}
 		\item When processing a document of XML, only a single rule is ever used to process the current node in the current node list;
@@ -26,7 +26,7 @@
 		\item <xsl:output method="html"/>;
 		\item <xsl:output method="text"/>.
         \end{itemize}
-\subsection*{Group Discussion Result}
+\subsection{Group Discussion Result}
 	Key point to the XSLT parsing is the XPath pattern matching system used to find and match source blocks with the templates. XSLT is modular and can be extended; when using multiple XSLT templates the template with a "match" that is more specific then others is used to parse the source node. Templates with a higher specificity take precedence over less specific templates. E.g. \textcolor{red}{match="ROW"} has a lower specificity than "\textcolor{green}{match=ROW[ SAL > 2000 ]}" as such if "\textcolor{green}{match=ROW[ SAL > 2000 ]}" is applicable the template which matches merely "\textcolor{blue}{ROW}" is ignored;
 
 	This is different to the process of CSS; in CSS if multiple patterns match an element all rules that are defined for those patterns are applied to the element. If multiple of the applied CSS rules define the same properties the more specific rule overwrites the properties set by less specific rules. But non overridden properties are inherited from which ever rule defined them. In XSLT only the most specific template is used and less specific templates are not inherited;
@@ -38,5 +38,4 @@
 	While making a stylesheet in order to make it easier to extend or edit your templates, one can make use of multiple templates rather than a single rooted template stylesheet.
 
 %\end{document}
->>>>>>> 8d3af9f16f64e57ba3b2bb998f59a45ed024d693
 
