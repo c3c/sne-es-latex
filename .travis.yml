@@ -1,7 +1,0 @@
-install:
-  - sudo apt-get install texmaker
-
-script: make
-
-notifications:
-  - email: false
