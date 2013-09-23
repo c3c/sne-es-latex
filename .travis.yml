@@ -1,5 +1,5 @@
 install:
-  - sudo apt-get install texlive
+  - sudo apt-get install texlive texlive-latex3
 
 script: make
 
