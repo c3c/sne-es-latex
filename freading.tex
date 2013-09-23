@@ -8,8 +8,17 @@
 \usepackage{subcaption}
 \usepackage{natbib}
 \usepackage{hyperref}
+
 \usepackage[usenames,dvipsnames]{color}
 \setlength{\parindent}{0 cm}
+
+\usepackage{colortbl}
+\usepackage{xparse}
+
+\NewDocumentEnvironment{cquote}{m}
+	{\vspace{10pt}\par\begin{tabular}{!{\color{Gray}\vrule}p{\textwidth}}}
+	{\\\vspace{6pt}-- \emph{#1} \end{tabular}\vspace{10pt}}
+
 
 %From azad.tex, seems to only add a warning or two to the build
 %\usepackage[usenames,dvi,svgames]{xcolor}
@@ -43,6 +52,7 @@ Esan Wit\\
 \include{azad}
 \include{esan}
 \include{leen}
+\include{latex}
 
 \appendix
 \section{References}
@@ -57,6 +67,7 @@ Name& What&Reference\\
 
 Cedric Van Bockhaven& Git setup&\\
 Cedric Van Bockhaven&XML and XHTML&\ref{sect:cedric}\\
+Cedric Van Bockhaven&LaTeX&\ref{sect:latex}\\
 \hline
 Azad Kamali& Further Reading, XML and XSLT concepts &\ref{sect:azad}\\
 \hline
@@ -66,6 +77,7 @@ Esan Wit & Minor rewriting XSLT concepts concerning XPath&\ref{sect:azad}\\
 Leendert van Duijn& Makefile&\\
 Leendert van Duijn& Initial skeleton&\\
 Leendert van Duijn& Git and SVN&\ref{sect:leen}\\
+Leendert van Duijn& LaTeX&\ref{sect:latex}\\
 \hline
 \end{tabular}
 
